@@ -12,14 +12,12 @@
 		<header>
 			<div class="container">
 				<nav>
-					<ul class="main-navigation">
+					<ul class="main__nav">
 						<li>
-							<a href="#" class="main-navigation__link active-link">Inicio</a>
+							<a href="#" class="nav__link nav__link--active">Inicio</a>
 						</li>
 						<li>
-							<a
-								href="calculadora/calculadora.html"
-								class="main-navigation__link"
+							<a href="calculadora/calculadora.html" class="nav__link"
 								>Calculadora</a
 							>
 						</li>
@@ -28,59 +26,75 @@
 			</div>
 		</header>
 		<section>
-			<div class="container form-section">
+			<div class="container form--wrapper">
 				<form>
-					<label for="id">NÚMERO DE IDENTIFICACIÓN</label>
-					<input
-						type="number"
-						name="id"
-						id="id"
-						placeholder="NÚMERO DE IDENTIFICACIÓN"
-					/>
-					<label for="name">NOMBRES Y APELLIDOS</label>
-					<input
-						type="text"
-						name="name"
-						id="name"
-						placeholder="NOMBRES Y APELLIDOS"
-					/>
-					<label for="cel">CELULAR</label>
-					<input type="number" name="cel" id="cel" placeholder="CELULAR" />
-					<label for="email">EMAIL</label>
-					<input type="email" name="email" id="email" placeholder="EMAIL" />
-					<label for="area">ÁREA/OPERACIÓN</label>
-					<input
-						type="text"
-						name="area"
-						id="area"
-						placeholder="ÁREA/OPERACIÓN"
-					/>
-					<label for="cargo">CARGO</label>
-					<input type="text" name="cargo" id="cargo" placeholder="CARGO" />
-					<label for="contact"
-						>SI NECESITAMOS CONTACTARTE TELEFÓNICAMENTE, INDICANOS DONDE TE
-						ENCUENTRAS?</label
-					>
-					<input
-						list="locations"
-						name="contact"
-						id="contact"
-						placeholder="SI NECESITAMOS CONTACTARTE TELEFÓNICAMENTE, INDICANOS DONDE TE ENCUENTRAS?"
-					/>
-					<datalist id="locations">
-						<option value="Antioquia"></option>
-						<option value="Bogotá"></option>
-						<option value="Cali"></option>
-					</datalist>
-					<label for="time">HORARIO EN EL QUE TE PODEMOS CONTACTAR</label>
-					<input
-						type="time"
-						value="14:00"
-						name="time"
-						id="time"
-						placeholder="HORARIO EN EL QUE TE PODEMOS CONTACTAR"
-					/>
-					<button type="submit">ENVIAR<span class="arrow"></span></button>
+					<div class="form__input--group">
+						<label for="id">Número de identificación</label>
+						<input
+							type="number"
+							name="id"
+							id="id"
+							placeholder="Número de identificación"
+						/>
+					</div>
+					<div class="form__input--group">
+						<label for="name">Nombres y apellidos</label>
+						<input
+							type="text"
+							name="name"
+							id="name"
+							placeholder="Nombres y apellidos"
+						/>
+					</div>
+					<div class="form__input--group">
+						<label for="cel">Celular</label>
+						<input type="number" name="cel" id="cel" placeholder="Celular" />
+					</div>
+					<div class="form__input--group">
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" placeholder="Email" />
+					</div>
+					<div class="form__input--group">
+						<label for="area">Área/Operación</label>
+						<input
+							type="text"
+							name="area"
+							id="area"
+							placeholder="Área/Operación"
+						/>
+					</div>
+					<div class="form__input--group">
+						<label for="cargo">Cargo</label>
+						<input type="text" name="cargo" id="cargo" placeholder="Cargo" />
+					</div>
+					<div class="form__input--group">
+						<label for="contact"
+							>Si necesitamos contactarte telefónicamente, indicanos donde te
+							encuentras?</label
+						>
+						<input
+							list="locations"
+							name="contact"
+							id="contact"
+							placeholder="Si necesitamos contactarte telefónicamente, indicanos donde te encuentras?"
+						/>
+						<datalist id="locations">
+							<option value="Antioquia"></option>
+							<option value="Bogotá"></option>
+							<option value="Cali"></option>
+						</datalist>
+					</div>
+					<div class="form__input--group">
+						<label for="time">Horario en el que te podemos contactar</label>
+						<input
+							type="time"
+							value="14:00"
+							name="time"
+							id="time"
+							placeholder="Horario en el que te podemos contactar"
+						/>
+					</div>
+					<button type="submit">ENVIAR<span class="btn__arrow"></span></button>
 				</form>
 			</div>
 		</section>
