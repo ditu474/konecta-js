@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="global.css" />
+		<link rel="stylesheet" href="index.css" />
+		<title>Inicio</title>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<nav>
+					<ul class="main-navigation">
+						<li>
+							<a href="#" class="main-navigation__link active-link">Inicio</a>
+						</li>
+						<li>
+							<a
+								href="calculadora/calculadora.html"
+								class="main-navigation__link"
+								>Calculadora</a
+							>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section>
+			<div class="container form-section">
+				<form>
+					<label for="id">NÚMERO DE IDENTIFICACIÓN</label>
+					<input
+						type="number"
+						name="id"
+						id="id"
+						placeholder="NÚMERO DE IDENTIFICACIÓN"
+					/>
+					<label for="name">NOMBRES Y APELLIDOS</label>
+					<input
+						type="text"
+						name="name"
+						id="name"
+						placeholder="NOMBRES Y APELLIDOS"
+					/>
+					<label for="cel">CELULAR</label>
+					<input type="number" name="cel" id="cel" placeholder="CELULAR" />
+					<label for="email">EMAIL</label>
+					<input type="email" name="email" id="email" placeholder="EMAIL" />
+					<label for="area">ÁREA/OPERACIÓN</label>
+					<input
+						type="text"
+						name="area"
+						id="area"
+						placeholder="ÁREA/OPERACIÓN"
+					/>
+					<label for="cargo">CARGO</label>
+					<input type="text" name="cargo" id="cargo" placeholder="CARGO" />
+					<label for="contact"
+						>SI NECESITAMOS CONTACTARTE TELEFÓNICAMENTE, INDICANOS DONDE TE
+						ENCUENTRAS?</label
+					>
+					<input
+						list="locations"
+						name="contact"
+						id="contact"
+						placeholder="SI NECESITAMOS CONTACTARTE TELEFÓNICAMENTE, INDICANOS DONDE TE ENCUENTRAS?"
+					/>
+					<datalist id="locations">
+						<option value="Antioquia"></option>
+						<option value="Bogotá"></option>
+						<option value="Cali"></option>
+					</datalist>
+					<label for="time">HORARIO EN EL QUE TE PODEMOS CONTACTAR</label>
+					<input
+						type="time"
+						value="14:00"
+						name="time"
+						id="time"
+						placeholder="HORARIO EN EL QUE TE PODEMOS CONTACTAR"
+					/>
+					<button type="submit">ENVIAR<span class="arrow"></span></button>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>
