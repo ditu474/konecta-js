@@ -6,16 +6,19 @@
 	overflow: hidden;
 }
 
+.scrollable__div {
+	overflow-x: scroll;
+}
+
 .caculator__display {
+	min-width: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 	height: 5rem;
-	background-color: #fbab7e;
-	background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
-	color: white;
-	text-align: end;
+	background: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+	color: black;
 	font-size: 200%;
-	width: 100%;
-	font-family: 'Poppins', sans-serif;
-	border: none;
 	padding: 0 0.5rem;
 }
 
@@ -43,7 +46,7 @@
 .key--operator,
 .key--decimal,
 .key--clear {
-	background-color: #fafafa;
+	background-color: #bbb;
 }
 
 .key--number {
@@ -51,14 +54,13 @@
 }
 
 .key--clear {
-	color: #fbab7e;
+	color: red;
 }
 
 .key--equal {
 	grid-column: 4 / 5;
 	grid-row: 2 /6;
-	background-color: #fbab7e;
-	background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+	background: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
 
 @media only screen and (max-width: 480px) {

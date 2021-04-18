@@ -25,12 +25,14 @@
 		</header>
 		<section>
 			<div class="container calculator--wrapper">
-				<input type="text" class="caculator__display" />
+				<div class="scrollable__div">
+					<div type="text" class="caculator__display"></div>
+				</div>
 				<div class="calculator__keys">
-					<button class="key--operator">+</button>
-					<button class="key--operator">-</button>
-					<button class="key--operator">&times;</button>
-					<button class="key--operator">÷</button>
+					<button class="key--operator" data-action="add">+</button>
+					<button class="key--operator" data-action="subtract">-</button>
+					<button class="key--operator" data-action="multiply">&times;</button>
+					<button class="key--operator" data-action="divide">÷</button>
 					<button class="key--number">7</button>
 					<button class="key--number">8</button>
 					<button class="key--number">9</button>
@@ -47,5 +49,6 @@
 				</div>
 			</div>
 		</section>
+		<script src="./calculadora.js"></script>
 	</body>
 </html>
