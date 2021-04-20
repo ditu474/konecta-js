@@ -27,7 +27,7 @@
 		</header>
 		<section>
 			<div class="container form--wrapper">
-				<form>
+				<form id="main-form">
 					<div class="form__input--group">
 						<label for="id">Número de identificación</label>
 						<input
@@ -68,35 +68,43 @@
 						<input type="text" name="cargo" id="cargo" placeholder="Cargo" />
 					</div>
 					<div class="form__input--group">
-						<label for="contact"
+						<label for="location"
 							>Si necesitamos contactarte telefónicamente, indicanos donde te
 							encuentras?</label
 						>
 						<input
 							list="locations"
-							name="contact"
-							id="contact"
-							placeholder="Si necesitamos contactarte telefónicamente, indicanos donde te encuentras?"
+							name="location"
+							id="location"
+							placeholder="Selecciona tu ubicación"
 						/>
-						<datalist id="locations">
-							<option value="Antioquia"></option>
-							<option value="Bogotá"></option>
-							<option value="Cali"></option>
-						</datalist>
+						<datalist id="locations"></datalist>
 					</div>
 					<div class="form__input--group">
-						<label for="time">Horario en el que te podemos contactar</label>
-						<input
-							type="time"
-							value="14:00"
-							name="time"
-							id="time"
-							placeholder="Horario en el que te podemos contactar"
-						/>
+						<label>Horario en el que te podemos contactar</label>
+						<div class="input--time">
+							<label for="timeSince">Desde:</label>
+							<input
+								type="time"
+								name="timeSince"
+								id="timeSince"
+								value="06:00"
+							/>
+							<label for="timeUntil">Hasta:</label>
+							<input
+								type="time"
+								name="timeUntil"
+								id="timeUntil"
+								value="15:00"
+							/>
+						</div>
 					</div>
-					<button type="submit">ENVIAR<span class="btn__arrow"></span></button>
+					<button type="submit" id="submit-button">
+						ENVIAR<span class="btn__arrow"></span>
+					</button>
 				</form>
 			</div>
 		</section>
+		<script src="index.js"></script>
 	</body>
 </html>
