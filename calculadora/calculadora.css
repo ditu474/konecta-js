@@ -37,6 +37,29 @@
 	border: none;
 	font-size: 1.5rem;
 	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	transition-duration: 0.4s;
+}
+
+.calculator__keys button::after {
+	content: '';
+	background: #585858;
+	display: block;
+	position: absolute;
+	padding-top: 300%;
+	padding-left: 350%;
+	margin-left: -20px !important;
+	margin-top: -120%;
+	opacity: 0;
+	transition: all 0.5s;
+}
+
+.calculator__keys button:active::after {
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	transition: 0s;
 }
 
 .calculator__keys button:focus {
