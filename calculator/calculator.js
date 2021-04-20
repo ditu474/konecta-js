@@ -4,6 +4,7 @@ const keyClear = document.querySelector('.key--clear');
 const keyOperators = document.querySelectorAll('.key--operator');
 const keyDecimal = document.querySelector('.key--decimal');
 const keyEqual = document.querySelector('.key--equal');
+const historyList = document.getElementById('calculator--history');
 
 const DISPLAY_INIT_STATE = '';
 const NUMBER_KEY = 'number';
@@ -54,14 +55,60 @@ function calculate(operator, firstValue, secondValue) {
 	return res;
 }
 
-function displayTotal() {
+function getOperatorSymbol(operator) {
+	let symbol = '';
+
+	switch (operator) {
+		case 'add':
+			symbol = '+';
+			break;
+		case 'subtract':
+			symbol = '-';
+			break;
+		case 'multiply':
+			symbol = '*';
+			break;
+		case 'divide':
+			symbol = '÷';
+			break;
+	}
+
+	return symbol;
+}
+
+function displayCalculationInHistory(operator, firstValue, secondValue, total) {
+	const listItem = document.createElement('li');
+	const content = document.createTextNode(
+		`${firstValue} ${getOperatorSymbol(operator)} ${secondValue} = ${total}`
+	);
+	listItem.appendChild(content);
+
+	if (!isFinite(total)) {
+		listItem.className = 'invalid';
+	} else {
+		listItem.className = 'valid';
+	}
+
+	historyList.prepend(listItem);
+}
+
+function displayCalculation() {
+	const firstNumberParsed = parseFloat(firstNumber);
+	const secondNumberParsed = parseFloat(getDisplayContent());
+
 	const total = calculate(
 		operatorClicked,
-		Number(firstNumber),
-		Number(getDisplayContent())
+		firstNumberParsed,
+		secondNumberParsed
 	);
 
 	changeDisplayContent(total);
+	displayCalculationInHistory(
+		operatorClicked,
+		firstNumberParsed,
+		secondNumberParsed,
+		total
+	);
 }
 
 keyNumbers.forEach((key) => {
@@ -86,9 +133,15 @@ keyNumbers.forEach((key) => {
 });
 
 keyDecimal.addEventListener('click', () => {
-	if (lastKeyType === OPERATOR_KEY || lastKeyType === EQUAL_KEY) {
+	if (
+		lastKeyType === OPERATOR_KEY ||
+		lastKeyType === EQUAL_KEY ||
+		getDisplayContent() === DISPLAY_INIT_STATE
+	) {
 		changeDisplayContent('0.');
-		firstNumber = '';
+		if (lastKeyType === EQUAL_KEY) {
+			firstNumber = '';
+		}
 	} else if (lastKeyType === MINUS_KEY) {
 		changeDisplayContent('-0.');
 	} else if (!getDisplayContent().includes('.')) {
@@ -116,10 +169,9 @@ keyOperators.forEach((key) => {
 			lastKeyType !== EQUAL_KEY &&
 			lastKeyType !== MINUS_KEY
 		) {
-			displayTotal();
+			displayCalculation();
 		}
 
-		// Avoid operations if the calculator doesn't have a valid operation on input
 		if (
 			getDisplayContent() !== DISPLAY_INIT_STATE &&
 			getDisplayContent() !== '-'
@@ -144,7 +196,7 @@ keyEqual.addEventListener('click', () => {
 		lastKeyType !== EQUAL_KEY &&
 		lastKeyType !== OPERATOR_KEY
 	) {
-		displayTotal();
+		displayCalculation();
 	}
 
 	lastKeyType = EQUAL_KEY;
