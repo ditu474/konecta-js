@@ -16,9 +16,9 @@ export function isIn(str, values) {
 
 export function isLength(str, options = { min: 0, max: undefined }) {
 	if (options.max) {
-		return `Debe tener minimo ${options.min} caracteres y maximo ${options.max}`;
+		return `Debe tener mínimo ${options.min} caracteres y máximo ${options.max}`;
 	}
-	return `Debe tener minimo ${options.min} caracteres`;
+	return `Debe tener mínimo ${options.min} caracteres`;
 }
 
 export function isMobilePhone(str) {
