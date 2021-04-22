@@ -1,10 +1,10 @@
 import {
-	isAlpha,
 	isEmail,
 	isIn,
 	isLength,
-	isMinorTime,
 	isMobilePhone,
+	isName,
+	isNameAndLastName,
 	isNumeric,
 	isTime,
 } from './validators.js';
@@ -19,7 +19,6 @@ const cargoInput = document.getElementById('cargo');
 const locationInput = document.getElementById('location');
 const timeSinceInput = document.getElementById('timeSince');
 const timeUntilInput = document.getElementById('timeUntil');
-const submitButton = document.getElementById('submit-button');
 const dataListLocations = document.getElementById('locations');
 
 const DUMMY_LOCATIONS = ['Antioquia', 'Bogotá', 'Cali', 'Barranquilla'];
@@ -47,7 +46,6 @@ const formObject = {
 	inputs: [
 		{
 			valid: false,
-			touched: false,
 			element: idNumberInput,
 			validators: [
 				validatorWrapper(isNumeric),
@@ -56,93 +54,100 @@ const formObject = {
 		},
 		{
 			valid: false,
-			touched: false,
 			element: nameInput,
 			validators: [
-				validatorWrapper(isAlpha),
+				validatorWrapper(isNameAndLastName),
 				validatorWrapper(isLength, { min: 5, max: 30 }),
 			],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: celInput,
 			validators: [validatorWrapper(isMobilePhone)],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: emailInput,
 			validators: [validatorWrapper(isEmail)],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: areaInput,
 			validators: [
-				validatorWrapper(isAlpha),
+				validatorWrapper(isName),
 				validatorWrapper(isLength, { min: 3 }),
 			],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: cargoInput,
 			validators: [
-				validatorWrapper(isAlpha),
+				validatorWrapper(isName),
 				validatorWrapper(isLength, { min: 3 }),
 			],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: locationInput,
 			validators: [validatorWrapper(isIn, DUMMY_LOCATIONS)],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: timeSinceInput,
-			validators: [
-				validatorWrapper(isTime),
-				validatorWrapper(isMinorTime, timeUntilInput.value),
-			],
+			validators: [validatorWrapper(isTime)],
 		},
 		{
 			valid: false,
-			touched: false,
 			element: timeUntilInput,
 			validators: [validatorWrapper(isTime)],
 		},
 	],
 };
 
-formObject.inputs.forEach((input) => {
-	input.element.addEventListener('change', (evt) => {
-		const parent = input.element.parentNode;
-		let sibling = input.element.nextSibling;
-		while (sibling) {
-			const aux = sibling.nextSibling;
+function checkInput(evt, input) {
+	removeErrorsOfInput(input.element);
+	const errors = validateInput(evt, input);
+	if (errors.length > 0) {
+		input.valid = false;
+		input.element.className = 'input--invalid';
+		addErrorsToInput(input.element, errors);
+	} else {
+		input.valid = true;
+		input.element.className = 'input--valid';
+	}
+}
+
+function validateInput(evt, input) {
+	return input.validators
+		.map((validator) => validator(evt.target.value))
+		.filter((el) => el.length > 0);
+}
+
+function addErrorsToInput(element, errors) {
+	const parent = element.parentNode;
+	errors.forEach((err) => {
+		const span = document.createElement('span');
+		const content = document.createTextNode(err);
+		span.appendChild(content);
+		span.className = 'input__message--invalid';
+		parent.insertBefore(span, element.nextSibling);
+	});
+}
+
+function removeErrorsOfInput(element) {
+	const parent = element.parentNode;
+	let sibling = element.nextSibling;
+	while (sibling) {
+		const aux = sibling.nextSibling;
+		if (sibling.className === 'input__message--invalid')
 			parent.removeChild(sibling);
-			sibling = aux;
-		}
-		const errors = input.validators.map((validator) =>
-			validator(evt.target.textContent)
-		);
-		if (errors.length > 0) {
-			input.invalid = false;
-			input.element.className = 'input--invalid';
-			errors.forEach((err) => {
-				const span = document.createElement('span');
-				const content = document.createTextNode(err);
-				span.appendChild(content);
-				span.className = 'input__message--invalid';
-				parent.insertBefore(span, input.element.nextSibling);
-			});
-		} else {
-			input.valid = true;
-			input.element.className = 'input--valid';
-		}
+		sibling = aux;
+	}
+}
+
+formObject.inputs.forEach((input) => {
+	input.element.addEventListener('input', (evt) => {
+		checkInput(evt, input);
 	});
 });
 
