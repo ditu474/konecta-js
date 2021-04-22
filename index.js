@@ -1,3 +1,4 @@
+import { showModalError } from './modal.js';
 import {
 	isEmail,
 	isIn,
@@ -153,5 +154,9 @@ formObject.inputs.forEach((input) => {
 
 form.addEventListener('submit', (event) => {
 	event.preventDefault();
-	console.log(formObject.valid());
+	if (!formObject.valid()) {
+		showModalError('Debes completar todos los campos correctamente');
+	} else {
+		alert('valido');
+	}
 });
