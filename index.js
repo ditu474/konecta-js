@@ -1,4 +1,4 @@
-import { showModalError } from './modal.js';
+import { createConfirmDataModal, createSimpleModal } from './modal.js';
 import {
 	isEmail,
 	isIn,
@@ -155,8 +155,38 @@ formObject.inputs.forEach((input) => {
 form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	if (!formObject.valid()) {
-		showModalError('Debes completar todos los campos correctamente');
+		createSimpleModal('Debes completar todos los campos correctamente');
 	} else {
-		alert('valido');
+		const content = {};
+
+		for (const input of formObject.inputs) {
+			const label = document.querySelector(`label[for=${input.element.id}]`);
+			content[label.innerText] = input.element.value;
+		}
+
+		content[
+			'Horario de contacto'
+		] = `${content['Desde:']} - ${content['Hasta:']}`;
+		delete content['Desde:'];
+		delete content['Hasta:'];
+
+		content['Ubicación'] =
+			content[
+				'Si necesitamos contactarte telefónicamente, indicanos donde te encuentras?'
+			];
+		delete content[
+			'Si necesitamos contactarte telefónicamente, indicanos donde te encuentras?'
+		];
+
+		createConfirmDataModal(content, clearForm);
 	}
 });
+
+function clearForm() {
+	formObject.inputs.forEach((input) => {
+		input.valid = false;
+		input.element.value = '';
+		input.element.className = '';
+		removeErrorsOfInput(input.element);
+	});
+}

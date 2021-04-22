@@ -14,6 +14,7 @@ body {
 	margin: 0;
 	background: #eee;
 	font-family: 'Poppins', sans-serif;
+	position: relative;
 }
 
 .container {
