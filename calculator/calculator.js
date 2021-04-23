@@ -52,7 +52,7 @@ function calculate(operator, firstValue, secondValue) {
 		return 'Indeterminado';
 	}
 
-	return res;
+	return res.toFixed(5);
 }
 
 function getOperatorSymbol(operator) {
