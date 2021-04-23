@@ -36,6 +36,8 @@
 							name="id"
 							id="id"
 							placeholder="Número de identificación"
+							minlength="8"
+							maxlength="11"
 						/>
 					</div>
 					<div class="form__input--group">
@@ -45,11 +47,19 @@
 							name="name"
 							id="name"
 							placeholder="Nombres y apellidos"
+							minlength="5"
+							maxlength="50"
 						/>
 					</div>
 					<div class="form__input--group">
 						<label for="cel">Celular</label>
-						<input type="number" name="cel" id="cel" placeholder="Celular" />
+						<input
+							type="number"
+							name="cel"
+							id="cel"
+							placeholder="Celular"
+							minlength="10"
+						/>
 					</div>
 					<div class="form__input--group">
 						<label for="email">Email</label>
@@ -62,11 +72,18 @@
 							name="area"
 							id="area"
 							placeholder="Área/Operación"
+							minlength="3"
 						/>
 					</div>
 					<div class="form__input--group">
 						<label for="cargo">Cargo</label>
-						<input type="text" name="cargo" id="cargo" placeholder="Cargo" />
+						<input
+							type="text"
+							name="cargo"
+							id="cargo"
+							placeholder="Cargo"
+							minlength="3"
+						/>
 					</div>
 					<div class="form__input--group">
 						<label for="location"
