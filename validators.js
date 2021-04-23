@@ -25,7 +25,7 @@ export function isTime(str) {
 
 export function isEmail(str) {
 	const regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-	if (!regexp.test(str)) return 'No es un email valido';
+	if (!regexp.test(str)) return 'No es un email válido';
 	return '';
 }
 
@@ -62,7 +62,7 @@ export function isNameAndLastName(str) {
 	const regexp = new RegExp(
 		/^[a-zA-ZÀ-ú]{3,}(([',. -][a-zA-ZÀ-ú]{2,})[a-zA-ZÀ-ú]*)+$/
 	);
-	if (!regexp.test(str)) return 'Debes ingresar un nombre y un apellido valido';
+	if (!regexp.test(str)) return 'Debes ingresar un nombre y un apellido válido';
 	return '';
 }
 
@@ -70,6 +70,7 @@ export function isName(str) {
 	const regexp = new RegExp(
 		/^[a-zA-ZÀ-ú]+(([',. -][a-zA-ZÀ-ú])[a-zA-ZÀ-ú]*)*$/
 	);
-	if (!regexp.test(str)) return 'Debe contener solo letras y espacios';
+	if (!regexp.test(str))
+		return 'Debe contener solo letras y espacios entre ellas';
 	return '';
 }

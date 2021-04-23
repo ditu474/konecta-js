@@ -58,7 +58,7 @@ const formObject = {
 			element: nameInput,
 			validators: [
 				validatorWrapper(isNameAndLastName),
-				validatorWrapper(isLength, { min: 5, max: 30 }),
+				validatorWrapper(isLength, { min: 5, max: 50 }),
 			],
 		},
 		{
