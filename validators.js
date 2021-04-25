@@ -4,6 +4,14 @@ export function isNumeric(str) {
 	return '';
 }
 
+export function isID(str) {
+	const regexp = new RegExp(/^0/);
+	if (regexp.test(str)) return 'No puede iniciar con cero';
+	if (isLength(str, { min: 6, max: 10 }))
+		return 'Debe tener mínimo 6 números y máximo 10';
+	return '';
+}
+
 export function isTime(str) {
 	const message = 'No es un tiempo con formato HH:MM';
 	if (str.includes(':') === -1) {

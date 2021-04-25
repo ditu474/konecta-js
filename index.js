@@ -1,6 +1,7 @@
 import { createConfirmDataModal, createSimpleModal } from './modal.js';
 import {
 	isEmail,
+	isID,
 	isIn,
 	isLength,
 	isMobilePhone,
@@ -32,6 +33,21 @@ DUMMY_LOCATIONS.forEach((location) => {
 	dataListLocations.appendChild(option);
 });
 
+const disabledCaractersNumberInput = ['e', 'E', '-', '.'];
+
+idNumberInput.addEventListener(
+	'keypress',
+	(evt) =>
+		disabledCaractersNumberInput.concat('+').includes(evt.key) &&
+		evt.preventDefault()
+);
+
+celInput.addEventListener(
+	'keypress',
+	(evt) =>
+		disabledCaractersNumberInput.includes(evt.key) && evt.preventDefault()
+);
+
 const validatorWrapper = (validator, ...params) => {
 	return (val) => validator(val, ...params);
 };
@@ -48,10 +64,7 @@ const formObject = {
 		{
 			valid: false,
 			element: idNumberInput,
-			validators: [
-				validatorWrapper(isNumeric),
-				validatorWrapper(isLength, { min: 8, max: 11 }),
-			],
+			validators: [validatorWrapper(isNumeric), validatorWrapper(isID)],
 		},
 		{
 			valid: false,
