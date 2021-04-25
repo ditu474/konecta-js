@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,55 +14,35 @@
 
 	<body>
 		<header>
-			<div class="container">
-				<nav>
+			<nav>
+				<div class="container"></div>
 					<ul class="main__nav">
 						<li>
 							<a href="#" class="nav__link nav__link--active">Inicio</a>
 						</li>
 						<li>
-							<a href="calculator/calculator.html" class="nav__link"
-								>Calculadora</a
-							>
+							<a href="calculator/calculator.html" class="nav__link">Calculadora</a>
 						</li>
 					</ul>
-				</nav>
-			</div>
+				</div>
+			</nav>
 		</header>
 		<section>
 			<div class="container form--wrapper">
 				<form id="main-form">
 					<div class="form__input--group">
 						<label for="id">Número de identificación</label>
-						<input
-							type="number"
-							name="id"
-							id="id"
-							placeholder="Número de identificación"
-							minlength="8"
-							maxlength="11"
-						/>
+						<input type="number" name="id" id="id" placeholder="Número de identificación" minlength="8"
+							maxlength="11" />
 					</div>
 					<div class="form__input--group">
 						<label for="name">Nombres y apellidos</label>
-						<input
-							type="text"
-							name="name"
-							id="name"
-							placeholder="Nombres y apellidos"
-							minlength="5"
-							maxlength="50"
-						/>
+						<input type="text" name="name" id="name" placeholder="Nombres y apellidos" minlength="5"
+							maxlength="50" />
 					</div>
 					<div class="form__input--group">
 						<label for="cel">Celular</label>
-						<input
-							type="number"
-							name="cel"
-							id="cel"
-							placeholder="Celular"
-							minlength="10"
-						/>
+						<input type="number" name="cel" id="cel" placeholder="Celular" minlength="10" />
 					</div>
 					<div class="form__input--group">
 						<label for="email">Email</label>
@@ -69,35 +50,16 @@
 					</div>
 					<div class="form__input--group">
 						<label for="area">Área/Operación</label>
-						<input
-							type="text"
-							name="area"
-							id="area"
-							placeholder="Área/Operación"
-							minlength="3"
-						/>
+						<input type="text" name="area" id="area" placeholder="Área/Operación" minlength="3" />
 					</div>
 					<div class="form__input--group">
 						<label for="cargo">Cargo</label>
-						<input
-							type="text"
-							name="cargo"
-							id="cargo"
-							placeholder="Cargo"
-							minlength="3"
-						/>
+						<input type="text" name="cargo" id="cargo" placeholder="Cargo" minlength="3" />
 					</div>
 					<div class="form__input--group">
-						<label for="location"
-							>Si necesitamos contactarte telefónicamente, indicanos donde te
-							encuentras?</label
-						>
-						<input
-							list="locations"
-							name="location"
-							id="location"
-							placeholder="Selecciona tu ubicación"
-						/>
+						<label for="location">Si necesitamos contactarte telefónicamente, indicanos donde te
+							encuentras?</label>
+						<input list="locations" name="location" id="location" placeholder="Selecciona tu ubicación" />
 						<datalist id="locations"></datalist>
 					</div>
 					<div class="form__input--group input--time">
@@ -119,4 +81,5 @@
 		</section>
 		<script type="module" src="index.js"></script>
 	</body>
+
 </html>
