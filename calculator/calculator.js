@@ -52,7 +52,7 @@ function calculate(operator, firstValue, secondValue) {
 		return 'Indeterminado';
 	}
 
-	return res.toFixed(5);
+	return res.toFixed(10).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/, '$1');
 }
 
 function getOperatorSymbol(operator) {
